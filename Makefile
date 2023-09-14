@@ -11,7 +11,7 @@ build/podinfo:
 	zarf package create packages/robinfo --confirm -o build
 
 build/bundle: 
-	uds bundle create --set INIT_VERSION=$(ZARF_VERSION) --set METALLB_VERSION=$(METALLB_VERSION) --set DUBBD_VERSION=$(DUBBD_K3D_VERSION)  --confirm
+	uds bundle create --confirm
 
 deploy/bundle:
 	uds bundle deploy uds-bundle-uds-core-k3d-amd64-0.0.1.tar.zst --confirm
