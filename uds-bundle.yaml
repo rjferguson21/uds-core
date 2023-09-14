@@ -1,0 +1,35 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/defenseunicorns/uds-cli/main/uds.schema.json
+
+kind: UDSBundle
+metadata:
+  name: uds-core-k3d
+  description: uds core
+  version: 0.0.1
+
+zarf-packages:
+  # Zarf init
+  - name: init
+    repository: ghcr.io/defenseunicorns/packages/init
+    ref: v0.29.1
+    optional-components:
+      - git-server
+
+  # Metallb
+  - name: metallb
+    repository: ghcr.io/defenseunicorns/packages/metallb
+    ref: 0.0.1
+
+  # Defense Unicorns Big Bang Distro
+  - name: dubbd-k3d
+    repository: ghcr.io/defenseunicorns/packages/dubbd-k3d
+    ref: 0.8.0
+
+  # UDS IdAM (keycloak)
+  - name: uds-idam
+    repository: ghcr.io/defenseunicorns/uds-capability/uds-idam
+    ref: 0.1.9
+
+  # UDS SSO (authservice, pepr)
+  - name: uds-sso
+    repository: ghcr.io/defenseunicorns/uds-capability/uds-sso
+    ref: 0.1.3

@@ -1,0 +1,16 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: robinfo
+  namespace: robinfo
+spec:
+  gateways:
+    - istio-system/tenant
+  hosts:
+    - robinfo.bigbang.dev
+  http:
+    - route:
+        - destination:
+            host: podinfo.robinfo.svc.cluster.local
+            port:
+              number: 9898

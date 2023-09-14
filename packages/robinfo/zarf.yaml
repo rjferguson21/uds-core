@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/defenseunicorns/zarf/main/zarf.schema.json
+kind: ZarfPackageConfig
+metadata:
+  name: robinfo
+  description: "An example mission app"
+  version: 6.0.0-bb.7
+
+components:
+  - name: robinfo
+    required: true
+    manifests:
+      - name: robinfo
+        namespace: robinfo
+        kustomizations:
+          - robinfo
+    images:
+      - "ghcr.io/stefanprodan/podinfo:6.3.6"
+    actions:
+      onRemove:
+        after:
+          - cmd: |
+              ./zarf tools kubectl delete secret/mission-robinfo -n authservice
+              ./zarf tools kubectl delete namespace robinfo
