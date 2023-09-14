@@ -2,7 +2,7 @@ cluster/create:
 	k3d cluster delete -c k3d.yaml
 	k3d cluster create -c k3d.yaml
 
-cluster/bundle: cluster/create build/bundle build/podinfo deploy/bundle deploy/podinfo
+cluster/bundle: cluster/create build/bundle build/podinfo deploy/bundle
 
 build:
 	mkdir -p build
